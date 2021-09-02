@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+
+language: generic
+
+before_install:
+  - docker build -t makalkin/doky -f Dockerfile.dev .
+
+
+script:
+  - docker run -e CI=true USERNAME/docker-react npm run test
